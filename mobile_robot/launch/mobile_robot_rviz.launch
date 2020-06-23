@@ -1,0 +1,16 @@
+<launch>
+
+    <param name="robot_description" command="$(find xacro)/xacro --inorder  
+        $(find mobile_robot_description)/urdf/mobile_robot.urdf.xacro"/>
+    <rosparam command="load" file="$(find mobile_robot)/cfg/robot_params.yaml"/>
+    <node name="rviz" pkg="rviz" type="rviz"/>    
+<!--   <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" /> -->
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+    <node name="custom_joint_state_publisher" pkg="mobile_robot" type="custom_joint_state_publisher" /> 
+   <!-- <node name="state_publisher" pkg="mobile_robot" type="state_publisher" />  -->
+    <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false"
+        output="screen" args="-urdf -model MobileRobot -param robot_description -z 0.05" />
+
+</launch> 
+<!--fixed frame: base_link -->
+<!--state_publisher or custom_joint_state_publisher 1 (except joint_state_publisher)-->
