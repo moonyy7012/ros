@@ -1,0 +1,15 @@
+<!--launch this and run ur5_fk or rviz(fixed_frame: base)-->
+<launch>
+    <arg name="open_rviz"   default="true" />
+    <arg name="use_gui"     default="true" />
+
+    <param name="robot_description"
+            command="$(find xacro)/xacro --inorder
+            '$(find ur_description)/urdf/ur5_joint_limited_robot.urdf.xacro'"/>
+
+    <node pkg="joint_state_publisher" type="joint_state_publisher" name="joint_state_publisher">
+        <param name="/use_gui" value="$(arg use_gui)"/>
+    </node>
+
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher"/>
+</launch>
