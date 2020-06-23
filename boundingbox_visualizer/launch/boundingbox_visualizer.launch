@@ -1,0 +1,24 @@
+<!--
+<launch>
+    <arg name="visual_x" default="1.0" />
+    <arg name="visual_y" default="1.0" />
+    <arg name="visual_z" default="2.0" />
+
+    <node name="box_pose_pub" pkg="boundingbox_visualizer" type="box_pose_pub" output="screen" >
+        <param name="mybox_pose_x" value="$(arg visual_x)" />
+        <param name="mybox_pose_y" value="$(arg visual_y)" />
+        <param name="mybox_pose_z" value="$(arg visual_z)" />
+    </node>
+
+    <node name="boundingbox_visualizer" pkg="boundingbox_visualizer" type="boundingbox_visualizer" output="screen" >
+        <param name="totalboxnum" value="5" />
+
+    </node>
+</launch>
+-->
+
+<launch>
+    <rosparam command="load" file="$(find boundingbox_visualizer)/cfg/box_params.yaml"/>
+    <node name="box_pose_pub" pkg="boundingbox_visualizer" type="box_pose_pub" output="screen" />
+    <node name="boundingbox_visualizer" pkg="boundingbox_visualizer" type="boundingbox_visualizer" output="screen" />
+</launch>

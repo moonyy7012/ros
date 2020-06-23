@@ -1,0 +1,7 @@
+boundingbox_visualizer:
+  totalboxnum: 5
+
+box_pose_pub:
+  mybox_pose_x: 0.0
+  mybox_pose_y: 0.0
+  mybox_pose_z: 0.0
